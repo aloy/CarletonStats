@@ -1,0 +1,55 @@
+#' Permutation test for the correlation of two variables.
+#'
+#' Hypothesis test for a correlation of two variables. The null hypothesis is
+#' that the population correlation is 0.
+#'
+#' Perform a permutation test to test \eqn{latex}{H_0: \rho = 0}, where
+#' \eqn{latex}{\rho}is the population correlation. The rows of the second
+#' variable are permuted and the correlation is re-computed.
+#'
+#' The mean and standard error of the permutation distribution is printed as
+#' well as a P-value.
+#'
+#' Observations with missing values are removed.
+#'
+#' @aliases permTestCor permTestCor.default permTestCor.formula
+#' @param x a numeric vector.
+#' @param y a numeric vector.
+#' @param B the number of resamples to draw (positive integer greater than 2).
+#' @param alternative alternative hypothesis. Options are \code{"two.sided"},
+#' \code{"less"} or \code{"greater"}.
+#' @param plot.hist a logical value. If \code{TRUE}, plot the distribution of
+#' the correlations obtained from each resample.
+#' @param legend.loc location of the legend on the histogram. Options are
+#' \code{"topright"}, \code{"topleft"}, \code{"bottomleft"} and
+#' \code{"bottomright"}.
+#' @param plot.qq a logical value. If \code{TRUE}, plot the normal
+#' quantile-quantile plot of the correlations obtained from each resample.
+#' @param x.name Label for variable x
+#' @param y.name Label for variable y
+#' @param formula a formula \code{y ~ x} where \code{x, y} are numeric vectors.
+#' @param data a data frame that contains the variables given in the formula.
+#' @param subset an optional expression indicating what observations to use.
+#' @param \dots further arguments to be passed to or from methods.
+#' @return Returns invisibly a vector of the correlations obtained by the
+#' randomization.
+#' @author Laura Chihara
+#' @references Tim Hesterberg's website:
+#' \url{http://www.timhesterberg.net/bootstrap}
+#' @keywords permutation test randomization resampling correlation
+#' @examples
+#'
+#' plot(states03$HSGrad, states03$TeenBirths)
+#' cor(states03$HSGrad, states03$TeenBirths)
+#'
+#' permTestCor(states03$HSGrad, states03$TeenBirths)
+#' permTestCor(TeenBirths ~ HSGrad, data = states03)
+#'
+#' @export
+
+permTestCor <-
+function(x,  ...)
+{
+  UseMethod("permTestCor")
+
+}
