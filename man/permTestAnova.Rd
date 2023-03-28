@@ -72,10 +72,10 @@ Observations with missing values are removed.
 }}
 \examples{
 
-permTestAnova(states03$ViolentCrime, states03$Region)
+permTestAnova(states03$ViolentCrime, states03$Region, B = 999)
 
 #using formula syntax
-permTest(ViolentCrime ~ Region, data = states03)
+permTestAnova(ViolentCrime ~ Region, data = states03, B = 999)
 
 }
 \references{
