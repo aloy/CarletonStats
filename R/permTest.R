@@ -37,7 +37,7 @@
 #' @return Returns invisibly a vector of the replicates of the test statistic.
 #' @author Laura Chihara
 #' @references Tim Hesteberg's website:
-#' \url{http://www.timhesterberg.net/bootstrap}
+#' \url{https://www.timhesterberg.net/bootstrap}
 #' @keywords permutation test resampling randomization
 #' @examples
 #'

@@ -90,7 +90,7 @@ bootCor(states03$ColGrad, states03$InfMortality)
 }
 \references{
 Tim Hesterberg's website
-\url{http://www.timhesterberg.net/bootstrap}
+\url{https://www.timhesterberg.net/bootstrap}
 }
 \author{
 Laura Chihara

@@ -1,7 +1,6 @@
 Package: CarletonStats
 Title: Functions for Statistics Classes at Carleton College
 Version: 2.1
-Date: 2018-08-08
 Authors@R: c(
   person("Laura", "Chihara" , email = "flchihara@carleton.edu", role = c("aut")),
   person("Adam", "Loy", email = "aloy@carleton.edu", role = c("aut", "cre"), 
@@ -10,7 +9,7 @@ Authors@R: c(
 Description: Includes commands for bootstrapping and permutation tests, a
     command for created grouped bar plots, and a demo of the
     quantile-normal plot for data drawn from different distributions.
-License: GPL (>= 2)
+License: GPL-2
 URL: https://github.com/aloy/CarletonStats
 BugReports: https://github.com/aloy/CarletonStats/issues
 Suggests: 

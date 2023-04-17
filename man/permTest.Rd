@@ -91,7 +91,7 @@ permTest(ViolentCrime ~ DeathPenalty, data = states03, alt = "less")
 }
 \references{
 Tim Hesteberg's website:
-\url{http://www.timhesterberg.net/bootstrap}
+\url{https://www.timhesterberg.net/bootstrap}
 }
 \author{
 Laura Chihara

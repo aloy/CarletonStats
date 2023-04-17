@@ -35,7 +35,7 @@
 #' randomization.
 #' @author Adam Loy, Laura Chihara
 #' @references Tim Hesterberg's website:
-#' \url{http://www.timhesterberg.net/bootstrap}
+#' \url{https://www.timhesterberg.net/bootstrap}
 #' @keywords permutation test randomization resampling correlation
 #' @examples
 #'

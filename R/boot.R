@@ -37,7 +37,7 @@
 #' @return A vector with the resampled statistics is returned invisibly.
 #' @author Laura Chihara
 #' @references Tim Hesterberg's website
-#' \url{http://www.timhesterberg.net/bootstrap}
+#' \url{https://www.timhesterberg.net/bootstrap}
 #' @keywords bootstrap resampling randomization
 #' @examples
 #'

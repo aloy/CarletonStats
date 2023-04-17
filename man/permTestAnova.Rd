@@ -80,7 +80,7 @@ permTestAnova(ViolentCrime ~ Region, data = states03, B = 999)
 }
 \references{
 Tim Hesteberg's website:
-\url{http://www.timhesterberg.net/bootstrap}
+\url{https://www.timhesterberg.net/bootstrap}
 }
 \author{
 Adam Loy, Laura Chihara

@@ -44,7 +44,7 @@ population}
 }
 }
 \source{
-United States Census Bureau \url{http://www.census.gov/}
+United States Census Bureau \url{https://www.census.gov/}
 }
 \description{
 Census data on the 50 states from 2003.

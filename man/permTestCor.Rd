@@ -92,7 +92,7 @@ permTestCor(TeenBirths ~ HSGrad, data = states03)
 }
 \references{
 Tim Hesterberg's website:
-\url{http://www.timhesterberg.net/bootstrap}
+\url{https://www.timhesterberg.net/bootstrap}
 }
 \author{
 Laura Chihara

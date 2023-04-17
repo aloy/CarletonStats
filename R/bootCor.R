@@ -32,7 +32,7 @@
 #' observations.
 #' @author Laura Chihara
 #' @references Tim Hesterberg's website
-#' \url{http://www.timhesterberg.net/bootstrap}
+#' \url{https://www.timhesterberg.net/bootstrap}
 #' @keywords resampling randomiziation
 #' @examples
 #'
