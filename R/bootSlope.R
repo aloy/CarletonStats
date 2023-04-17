@@ -31,7 +31,7 @@
 #' observations.
 #' @author Adam Loy, Laura Chihara
 #' @references Tim Hesterberg's website
-#' \url{https://www.timhesterberg.net/bootstrap}
+#' \url{https://www.timhesterberg.net/bootstrap-and-resampling}
 #' @keywords resampling randomiziation
 #' @examples
 #'

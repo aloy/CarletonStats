@@ -92,7 +92,7 @@ permTestSlope(TeenBirths ~ HSGrad, data = states03)
 }
 \references{
 Tim Hesterberg's website:
-\url{https://www.timhesterberg.net/bootstrap}
+\url{https://www.timhesterberg.net/bootstrap-and-resampling}
 }
 \author{
 Adam Loy, Laura Chihara
