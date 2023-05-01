@@ -89,10 +89,10 @@ Observations with missing values are removed.
 boot(ToothGrowth$len)
 
 #bootstrap difference in mean of tooth length for two groups.
-boot(ToothGrowth$len, ToothGrowth$supp)
+boot(ToothGrowth$len, ToothGrowth$supp, B = 1000)
 
 #same as above using formula syntax
-boot(len ~ supp, data = ToothGrowth)
+boot(len ~ supp, data = ToothGrowth, B = 1000)
 
 }
 \references{

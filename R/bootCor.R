@@ -38,8 +38,8 @@
 #'
 #'
 #' plot(states03$ColGrad, states03$InfMortality)
-#' bootCor(InfMortality ~ ColGrad, data = states03)
-#' bootCor(states03$ColGrad, states03$InfMortality)
+#' bootCor(InfMortality ~ ColGrad, data = states03, B = 1000)
+#' bootCor(states03$ColGrad, states03$InfMortality, B = 1000)
 #'
 #' @importFrom stats cor 
 #' @export

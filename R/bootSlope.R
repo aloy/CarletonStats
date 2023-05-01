@@ -37,8 +37,8 @@
 #'
 #'
 #' plot(states03$ColGrad, states03$InfMortality)
-#' bootSlope(InfMortality ~ ColGrad, data = states03)
-#' bootSlope(states03$ColGrad, states03$InfMortality)
+#' bootSlope(InfMortality ~ ColGrad, data = states03, B = 1000)
+#' bootSlope(states03$ColGrad, states03$InfMortality, B = 1000)
 #'
 #' @importFrom stats cor 
 #' @export
