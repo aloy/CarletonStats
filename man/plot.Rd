@@ -4,7 +4,7 @@
 \alias{plot.carlboot}
 \title{Plot the bootstrap distribution in \code{carlboot} object}
 \usage{
-\method{plot}{carlboot}(x, bins = 30, size = 5, ...)
+\method{plot}{carlboot}(x, bins = 15, size = 5, ...)
 }
 \arguments{
 \item{x}{The carlboot object to print.}
