@@ -3,7 +3,8 @@
 
 bootCor.default <-
 function(x, y, conf.level = 0.95, B = 10000, plot.hist = TRUE, hist.title = NULL,
-          plot.qq = FALSE, legend.loc = "topright", x.name=deparse(substitute(x)), y.name=deparse(substitute(y)), ...)
+          plot.qq = FALSE, legend.loc = "topright", x.name=deparse(substitute(x)), 
+         y.name=deparse(substitute(y)), ...)
     {
 
     if (B%%1  != 0 || B < 2) stop("B must be a positive integer")
@@ -34,14 +35,6 @@ function(x, y, conf.level = 0.95, B = 10000, plot.hist = TRUE, hist.title = NULL
     } #end for
   bootstrap.mean <- mean(temp)
 
-   cat("\n\t** Bootstrap of correlation **\n\n")
-   cat(" Observed correlation between ", x.name, " and ", y.name, ":", round(observed, 5), "\n")
-   cat(" Mean of bootstrap distribution:",  round(mean(temp),5),"\n")
-   cat(" Standard error of bootstrap distribution:", round(sd(temp), 5),"\n\n")
-   cat(" Bootstrap percentile interval\n")
-   print(round(quantile(temp, c(alpha/2, 1-alpha/2)), 5))
-   cat("\n\t\t*--------------*\n\n")
-
     if (plot.hist){
 
      if (is.null(hist.title))
@@ -65,5 +58,13 @@ function(x, y, conf.level = 0.95, B = 10000, plot.hist = TRUE, hist.title = NULL
        qqline(temp)
     }  #end if plot.qq
 
-    invisible(temp)
+    # invisible(temp)
+   class(temp) <- "carlboot"
+   attr(temp, "observed")  <- observed
+   attr(temp, "statistic") <- "correlation"
+   attr(temp, "groups")    <- NULL
+   attr(temp, "x.name")    <- x.name
+   attr(temp, "y.name")    <- y.name
+   attr(temp, "level")     <- conf.level
+   temp
 }

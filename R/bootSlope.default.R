@@ -33,14 +33,6 @@ bootSlope.default <-
     } #end for
     bootstrap.mean <- mean(temp)
     
-    cat("\n\t** Bootstrap of slope **\n\n")
-    cat(" Observed slope between ", x.name, " and ", y.name, ":", round(observed, 5), "\n")
-    cat(" Mean of bootstrap distribution:",  round(mean(temp),5),"\n")
-    cat(" Standard error of bootstrap distribution:", round(sd(temp), 5),"\n\n")
-    cat(" Bootstrap percentile interval\n")
-    print(round(quantile(temp, c(alpha/2, 1-alpha/2)), 5))
-    cat("\n\t\t*--------------*\n\n")
-    
     if (plot.hist){
       
       if (is.null(hist.title))
@@ -64,5 +56,13 @@ bootSlope.default <-
       qqline(temp)
     }  #end if plot.qq
     
-    invisible(temp)
+    # invisible(temp)
+    class(temp) <- "carlboot"
+    attr(temp, "observed")  <- observed
+    attr(temp, "statistic") <- "slope"
+    attr(temp, "groups")    <- NULL
+    attr(temp, "x.name")    <- x.name
+    attr(temp, "y.name")    <- y.name
+    attr(temp, "level")     <- conf.level
+    temp
   }

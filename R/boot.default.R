@@ -37,14 +37,6 @@ function(x, group = NULL, statistic = mean, conf.level = 0.95, B = 10000,
      observed <- stat(xc)
      boot.mean <- mean(temp)
 
-     cat("\n\t** Bootstrap interval for statistic\n\n")
-     cat( " Observed ", x.name, ":", round(observed, 5), "\n")
-     cat(" Mean of bootstrap distribution:",  round(mean(temp),5),"\n")
-     cat(" Standard error of bootstrap distribution:", round(sd(temp), 5),"\n\n")
-     cat(" Bootstrap percentile interval\n")
-     print(quantile(temp, c(alpha/2, 1-alpha/2)))
-     cat("\n\t\t*--------------*\n")
-
      if (plot.hist){
 
        my.title <- paste("Bootstrap distribution of statistic of \n", x.name, sep=" ")
@@ -111,15 +103,6 @@ function(x, group = NULL, statistic = mean, conf.level = 0.95, B = 10000,
       group1.name <- levels(group)[1]
       group2.name <- levels(group)[2]
 
-      cat("\n\t** Bootstrap interval for difference of statistic\n\n")
-      my.title1 <- paste(" Observed difference of statistic: ", group1.name, "-", group2.name, sep = " ")
-      cat(my.title1,"= ", round(observed, 5), "\n")
-      cat(" Mean of bootstrap distribution:", round(boot.mean,5),"\n")
-      cat(" Standard error of bootstrap distribution:", round(sd(temp), 5),"\n\n")
-      cat(" Bootstrap percentile interval\n")
-      print(quantile(temp, c(alpha/2, 1-alpha/2)))
-      cat("\n\t\t*--------------*\n")
-
       if (plot.hist){
 
        my.title <- paste("Bootstrap distribution for difference of statistic:\n", group1.name, "-", group2.name, sep=" ")
@@ -147,6 +130,13 @@ function(x, group = NULL, statistic = mean, conf.level = 0.95, B = 10000,
 
   } #end else
 
-invisible(temp)
+# invisible(temp)
+    class(temp) <- "carlboot"
+    attr(temp, "observed")  <- observed
+    attr(temp, "statistic") <- substitute(statistic)
+    attr(temp, "groups")    <- levels(group)
+    attr(temp, "x.name")    <- x.name
+    attr(temp, "level")     <- conf.level
+    temp
 
  }
