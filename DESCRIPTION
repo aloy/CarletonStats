@@ -1,6 +1,6 @@
 Package: CarletonStats
 Title: Functions for Statistics Classes at Carleton College
-Version: 2.1
+Version: 2.1.0.9000
 Authors@R: c(
   person("Laura", "Chihara" , email = "flchihara@carleton.edu", role = c("aut")),
   person("Adam", "Loy", email = "aloy@carleton.edu", role = c("aut", "cre"), 

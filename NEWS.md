@@ -1,3 +1,5 @@
+# CarletonStats (development version)
+
 # CarletonStats 2.1
 
 * Added a new bootstrap function: `bootSlope()`
