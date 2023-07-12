@@ -133,7 +133,7 @@ function(x, group = NULL, statistic = mean, conf.level = 0.95, B = 10000,
 # invisible(temp)
     class(temp) <- "carlboot"
     attr(temp, "observed")  <- observed
-    attr(temp, "statistic") <- substitute(statistic)
+    attr(temp, "statistic") <- as.character(substitute(statistic))
     attr(temp, "groups")    <- levels(group)
     attr(temp, "x.name")    <- x.name
     attr(temp, "level")     <- conf.level

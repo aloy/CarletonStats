@@ -4,10 +4,12 @@
 \alias{confint.carlboot}
 \title{Calculate a CI from a \code{carlboot} object}
 \usage{
-\method{confint}{carlboot}(x, level = 0.95, ...)
+\method{confint}{carlboot}(object, parm = NULL, level = 0.95, ...)
 }
 \arguments{
-\item{x}{The carlboot object to print.}
+\item{object}{The carlboot object to print.}
+
+\item{parm}{not used in CarletonStats, just for generic consistency}
 
 \item{level}{the confidence level}
 

@@ -4,13 +4,18 @@
 #' Plot the bootstrap distribution returned as a \code{carlboot} object.
 #'
 #' @param x The carlboot object to print.
+#' @param bins number of bins in histogram.
+#' @param size size of points.
 #' @param ... not used
 #'
 #' @rdname plot
 #' @export 
 #' @method plot carlboot
-plot.carlboot <- function(x, bins = 30, size = 5,...) {
+#' @importFrom scales label_percent
+#' @importFrom stats density
+plot.carlboot <- function(x, bins = 15, size = 5,...) {
   boot_stats <- as.numeric(x)
+  width <- NULL
   ggplot2::ggplot(data = NULL, ggplot2::aes(x = boot_stats)) +
     ggplot2::geom_histogram(aes(y = after_stat(width*density)), bins = bins) +
     ggplot2::geom_point(aes(x = mean(x), y = 0, color = "Bootstrap", shape = "Bootstrap"), size = size) +

@@ -3,13 +3,16 @@
 #' @description
 #' Calculate percentile confidence intervals for a \code{carlboot} object.
 #'
-#' @param x The carlboot object to print.
+#' @param object The carlboot object to print.
+#' @param parm not used in CarletonStats, just for generic consistency
 #' @param level the confidence level
 #' @param ... not used
 #'
 #' @rdname confint
 #' @export 
 #' @method confint carlboot
-confint.carlboot <- function(x, level = 0.95, ...) {
-  quantile(x, probs = (1 + c(-level, level)) / 2)
+#' @importFrom stats confint
+#' @import ggplot2
+confint.carlboot <- function(object, parm = NULL, level = 0.95, ...) {
+  quantile(object, probs = (1 + c(-level, level)) / 2)
 }

@@ -4,10 +4,14 @@
 \alias{plot.carlboot}
 \title{Plot the bootstrap distribution in \code{carlboot} object}
 \usage{
-\method{plot}{carlboot}(x, bins = 30, ...)
+\method{plot}{carlboot}(x, bins = 30, size = 5, ...)
 }
 \arguments{
 \item{x}{The carlboot object to print.}
+
+\item{bins}{number of bins in histogram.}
+
+\item{size}{size of points.}
 
 \item{...}{not used}
 }
