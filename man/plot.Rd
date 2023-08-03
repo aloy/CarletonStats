@@ -4,7 +4,7 @@
 \alias{plot.carlboot}
 \title{Plot the bootstrap distribution in \code{carlboot} object}
 \usage{
-\method{plot}{carlboot}(x, bins = 15, size = 5, ...)
+\method{plot}{carlboot}(x, bins = 15, size = 5, xlab = NULL, ylab = NULL, title = NULL, ...)
 }
 \arguments{
 \item{x}{The carlboot object to print.}
@@ -12,6 +12,12 @@
 \item{bins}{number of bins in histogram.}
 
 \item{size}{size of points.}
+
+\item{xlab}{an optional character string for the x-axis label}
+
+\item{ylab}{an optional character string for the y-axis label}
+
+\item{title}{an optional character string giving the plot title}
 
 \item{...}{not used}
 }

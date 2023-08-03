@@ -15,8 +15,10 @@ bootPaired(x, ...)
   conf.level = 0.95,
   B = 10000,
   plot.hist = TRUE,
+  xlab = NULL,
+  ylab = NULL,
+  title = NULL,
   plot.qq = FALSE,
-  legend.loc = "topright",
   x.name = deparse(substitute(x)),
   y.name = deparse(substitute(y)),
   ...
@@ -41,10 +43,6 @@ bootstrap distribution.}
 \item{plot.qq}{logical. If \code{TRUE}, a normal quantile-quantile plot of
 the replicates will be created.}
 
-\item{legend.loc}{location for the legend on the histogram. Options are
-\code{"topright"} \code{"topleft"}, \code{"bottomleft"} and
-\code{"bottomright"}.}
-
 \item{x.name}{Label for variable x}
 
 \item{y.name}{Label for variable y}
@@ -54,6 +52,10 @@ the replicates will be created.}
 \item{data}{a data frame that contains the variables given in the formula.}
 
 \item{subset}{an optional expression indicating what observations to use.}
+
+\item{legend.loc}{location for the legend on the histogram. Options are
+\code{"topright"} \code{"topleft"}, \code{"bottomleft"} and
+\code{"bottomright"}.}
 }
 \value{
 The command invisibly returns a vector with the replicates of the

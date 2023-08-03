@@ -15,9 +15,10 @@ bootCor(x, ...)
   conf.level = 0.95,
   B = 10000,
   plot.hist = TRUE,
-  hist.title = NULL,
+  xlab = NULL,
+  ylab = NULL,
+  title = NULL,
   plot.qq = FALSE,
-  legend.loc = "topright",
   x.name = deparse(substitute(x)),
   y.name = deparse(substitute(y)),
   ...
@@ -39,14 +40,8 @@ bootCor(x, ...)
 \item{plot.hist}{a logical value. If \code{TRUE}, plot the bootstrap
 distribution of the resampled correlation.}
 
-\item{hist.title}{a user supplied title for the histogram.}
-
 \item{plot.qq}{a logical value. If \code{TRUE} a normal quantile-quantile
 plot of the bootstraped values is created.}
-
-\item{legend.loc}{location to place the legend. Options include
-\code{"topright"}, \code{"topleft"}, \code{"bottomright"},
-\code{"bottomleft"}.}
 
 \item{x.name}{Label for variable x}
 
@@ -58,6 +53,12 @@ plot of the bootstraped values is created.}
 By default the variables are taken from environment(formula).}
 
 \item{subset}{an optional vector specifying a subset of observations to be used.}
+
+\item{hist.title}{a user supplied title for the histogram.}
+
+\item{legend.loc}{location to place the legend. Options include
+\code{"topright"}, \code{"topleft"}, \code{"bottomright"},
+\code{"bottomleft"}.}
 }
 \value{
 The command invisibly returns the correlations of the resampled
