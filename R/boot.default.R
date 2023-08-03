@@ -1,13 +1,14 @@
 #' @describeIn boot Bootstrap a single variable or a grouped variable
 #' @export
+#' @importFrom patchwork wrap_plots
 
 boot.default <-
 function(x, group = NULL, statistic = mean, conf.level = 0.95, B = 10000,
-     plot.hist = TRUE, legend.loc = "topright", plot.qq = FALSE, x.name = deparse(substitute(x)),
-      ...)
+     plot.hist = TRUE, plot.qq = FALSE, x.name = deparse(substitute(x)),
+     xlab = NULL, ylab = NULL, title = NULL, ...)
     {
 
-     if (B%%1  != 0 || B < 2) stop("B must be a positive integer")
+     if (B %% 1  != 0 || B < 2) stop("B must be a positive integer")
 
      alpha <- 1 - conf.level
 
@@ -36,31 +37,6 @@ function(x, group = NULL, statistic = mean, conf.level = 0.95, B = 10000,
 
      observed <- stat(xc)
      boot.mean <- mean(temp)
-
-     if (plot.hist){
-
-       my.title <- paste("Bootstrap distribution of statistic of \n", x.name, sep=" ")
-
-       out <-   hist(temp, plot = FALSE)
-       out$density <- 100*(out$counts)/sum(out$counts)
-       plot(out, freq = FALSE, ylab = "Percentage", main = my.title, xlab = "statistic",
-          cex.lab = .9, cex.main = .9)
-
-       points(observed, 0, pch = 2, col = "red")
-       points(boot.mean, 0, pch = 4, col = "blue")
-       legend(legend.loc, legend = c("Observed","Bootstrap"),  pch = c(2,4),
-          col = c("red", "blue"), cex = 0.8)
-
-       } #end if plot.hist
-
-      if (plot.qq){
-       if (Sys.getenv("RSTUDIO_USER_IDENTITY") == "")
-          grDevices::dev.new()
-
-        qqnorm(temp, ylab = "Bootstrap")
-        qqline(temp)
-       }  #end if plot.qq
-
 
      } #end if for single numeric variable
     #--------------------
@@ -103,31 +79,6 @@ function(x, group = NULL, statistic = mean, conf.level = 0.95, B = 10000,
       group1.name <- levels(group)[1]
       group2.name <- levels(group)[2]
 
-      if (plot.hist){
-
-       my.title <- paste("Bootstrap distribution for difference of statistic:\n", group1.name, "-", group2.name, sep=" ")
-#     cat("\n", my.title2, "\n")
-      out <- hist(temp,  plot=F)
-      xlabname <- paste("Difference in statistic")
-
-      out <- hist(temp, plot = FALSE)
-      out$density <- 100*(out$counts)/sum(out$counts)
-      plot(out, freq = FALSE, ylab = "Percentage", main = my.title, xlab = xlabname, cex.main = 0.9)
-
-      points(observed, 0, pch = 2, col = "red")
-      points(boot.mean, 0, pch = 4, col = "blue")
-      legend(legend.loc, legend = c("Observed","Bootstrap"),  pch = c(2,4),
-          col = c("red", "blue"), cex = 0.8)
-
-      } #end if plot.hist
-
-     if (plot.qq){
-       dev.new()
-       qqnorm(temp, ylab="Bootstrap")
-       qqline(temp)
-      }  #end if plot.qq
-
-
   } #end else
 
 # invisible(temp)
@@ -137,6 +88,30 @@ function(x, group = NULL, statistic = mean, conf.level = 0.95, B = 10000,
     attr(temp, "groups")    <- levels(group)
     attr(temp, "x.name")    <- x.name
     attr(temp, "level")     <- conf.level
+    
+    
+    if (plot.hist) {
+      phist <- plot(temp, xlab = xlab, ylab = ylab, title = title)
+    }
+    
+    if(plot.qq) {
+      pqq <- ggplot(data = NULL, aes(sample = as.numeric(temp))) +
+        geom_qq() + 
+        geom_qq_line() +
+        theme_classic() +
+        labs(x = "N(0, 1) Quantiles", y = "Bootstrap Statistics")
+    }
+    
+    which_plot <- c(phist = plot.hist, pqq = plot.qq)
+    
+    if(sum(which_plot) == 1) {
+      print(get(names(which(which_plot))))
+    }
+    
+    if(sum(which_plot) == 2) {
+      print(wrap_plots(phist, pqq, ncol = 2))
+    }
+    
     temp
 
  }

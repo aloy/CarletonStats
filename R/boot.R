@@ -19,7 +19,7 @@
 #' @param conf.level confidence level for the bootstrap percentile interval.
 #' Default is 95\%.
 #' @param B number of times to resample (positive integer greater than 2).
-#' @param plot.hist logical value. If \code{TRUE}, plot the histogrom of the
+#' @param plot.hist logical value. If \code{TRUE}, plot the histogram of the
 #' bootstrap distribution.
 #' @param legend.loc where to place the legend on the histogram. Default is
 #' \code{"topright"}. Other options include \code{"topleft"},
@@ -33,6 +33,9 @@
 #' formula may also be \code{~ y}.
 #' @param data a data frame that contains the variables given in the formula.
 #' @param subset an optional expression indicating what observations to use.
+#' @param xlab an optional character string for the x-axis label
+#' @param ylab an optional character string for the y-axis label
+#' @param title an optional character string giving the plot title
 #' @param \dots further arguments to be passed to or from methods.
 #' @return A vector with the resampled statistics is returned invisibly.
 #' @author Laura Chihara
