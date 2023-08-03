@@ -36,14 +36,8 @@ function(x, y,  B = 999,
 
   alt <- pmatch(alternative, c("less", "greater", "two.sided"), nomatch=4)
 
-   P <- c((sum(result <= observed) + 1)/(B+1), (sum(result >= observed) + 1)/(B+1))
-
-   P.value <- switch(alt,
-         P[1],
-         P[2],
-         2*min(P[1],P[2]),
-         stop("Alternative not matched.")
-  )
+  P.value <- .calc_pvalue(result, observed, alt)
+  
    if (P.value > 1) P.value <- 1
 
   my.title <- paste("Permutation distribution of slope: " ,x.name, ", ", y.name, sep= " ")
