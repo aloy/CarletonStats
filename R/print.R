@@ -1,7 +1,7 @@
 #' @title Print a summary of an \code{carlboot} object
 #'
 #' @description
-#' Print summary statistics and confidence intervals, if desired, for an \code{lmeresamp} object.
+#' Print summary statistics and confidence intervals for an \code{carlboot} object.
 #'
 #' @param x The carlboot object to print.
 #' @param ... not used
@@ -34,3 +34,28 @@ print.carlboot <- function(x, ...) {
   cat("\n\t\t*--------------*\n")
 }
 
+
+#' @title Print a summary of an \code{carlperm} object
+#'
+#' @description
+#' Print summary statistics, standard error, and p-value for a \code{carlperm} object.
+#'
+#' @param x The carlperm object to print.
+#' @param ... not used
+#'
+#' @rdname print
+#' @export 
+#' @method print carlperm
+print.carlperm <- function(x, ...) {
+  cat("\n\t** Permutation test **\n")
+  cat("\n Permutation test with alternative:", attr(x, "alternative"),"\n")
+  cat(" Observed statistic\n")
+  cat(" ", attr(x, "groups")[1], ": ", attr(x, "group.stats")[1], "\t", attr(x, "groups")[1],": ", attr(x, "group.stats")[2],"\n")
+  cat(" Observed difference:", round(attr(x, "observed"), 5), "\n\n")
+  cat(" Mean of permutation distribution:", round(mean(x), 5), "\n")
+  cat(" Standard error of permutation distribution:", round(mean(x), 5), "\n")
+  cat(" P-value: ", round(attr(x, "pval"), 5),"\n")
+  cat("\n\t*-------------*\n\n")
+  
+  
+}

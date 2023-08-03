@@ -2,15 +2,20 @@
 % Please edit documentation in R/print.R
 \name{print.carlboot}
 \alias{print.carlboot}
+\alias{print.carlperm}
 \title{Print a summary of an \code{carlboot} object}
 \usage{
 \method{print}{carlboot}(x, ...)
+
+\method{print}{carlperm}(x, ...)
 }
 \arguments{
-\item{x}{The carlboot object to print.}
+\item{x}{The carlperm object to print.}
 
 \item{...}{not used}
 }
 \description{
-Print summary statistics and confidence intervals, if desired, for an \code{lmeresamp} object.
+Print summary statistics and confidence intervals for an \code{carlboot} object.
+
+Print summary statistics, standard error, and p-value for a \code{carlperm} object.
 }
