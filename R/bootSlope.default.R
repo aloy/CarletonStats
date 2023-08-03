@@ -3,10 +3,13 @@
 bootSlope.default <-
   function(x, y, conf.level = 0.95, B = 10000, plot.hist = TRUE, 
            xlab = NULL, ylab = NULL, title = NULL,
-           plot.qq = FALSE, x.name=deparse(substitute(x)), y.name=deparse(substitute(y)), ...)
+           plot.qq = FALSE, x.name=deparse(substitute(x)), y.name=deparse(substitute(y)),
+           seed = NULL, ...)
   {
     
     if (B%%1  != 0 || B < 2) stop("B must be a positive integer")
+    
+    if(!is.null(seed)) set.seed(seed)
     
     alpha <- 1 - conf.level
     
@@ -33,7 +36,7 @@ bootSlope.default <-
       temp[i] <- cor(newx, newy) * sd(newy) / sd(newx)
     } #end for
     bootstrap.mean <- mean(temp)
-  
+    
     
     # invisible(temp)
     class(temp) <- "carlboot"

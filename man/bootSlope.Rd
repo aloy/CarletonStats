@@ -21,6 +21,7 @@ bootSlope(x, ...)
   plot.qq = FALSE,
   x.name = deparse(substitute(x)),
   y.name = deparse(substitute(y)),
+  seed = NULL,
   ...
 )
 
@@ -52,6 +53,8 @@ plot of the bootstraped values is created.}
 \item{x.name}{Label for variable x}
 
 \item{y.name}{Label for variable y}
+
+\item{seed}{optional argument to \linkto{set.seed}}
 
 \item{formula}{a formula of the form lhs ~ rhs where lhs is a numeric variable 
 giving the data values and rhs a factor with two levels giving the corresponding groups.}

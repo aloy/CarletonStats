@@ -20,6 +20,7 @@ boot(x, ...)
   xlab = NULL,
   ylab = NULL,
   title = NULL,
+  seed = NULL,
   ...
 )
 
@@ -55,6 +56,8 @@ quantile-quantile plot of the bootstrap distribution.}
 \item{ylab}{an optional character string for the y-axis label}
 
 \item{title}{an optional character string giving the plot title}
+
+\item{seed}{optional argument to \linkto{set.seed}}
 
 \item{formula}{a formula \code{y ~ g} where \code{y} is a numeric vector and
 \code{g} a factor variable with two levels. If \code{g} is a binary numeric

@@ -21,6 +21,7 @@ bootPaired(x, ...)
   plot.qq = FALSE,
   x.name = deparse(substitute(x)),
   y.name = deparse(substitute(y)),
+  seed = NULL,
   ...
 )
 
@@ -52,6 +53,8 @@ the replicates will be created.}
 \item{x.name}{Label for variable x}
 
 \item{y.name}{Label for variable y}
+
+\item{seed}{optional argument to \linkto{set.seed}}
 
 \item{formula}{a formula \code{y ~ x} where \code{x, y} are both numeric vectors}
 
