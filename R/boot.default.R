@@ -109,7 +109,7 @@ function(x, group = NULL, statistic = mean, conf.level = 0.95, B = 10000,
     }
     
     if(sum(which_plot) == 2) {
-      print(wrap_plots(phist, pqq, ncol = 2))
+      print(patchwork::wrap_plots(phist, pqq, ncol = 2))
     }
     
     temp

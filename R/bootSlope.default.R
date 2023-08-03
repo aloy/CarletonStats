@@ -63,7 +63,7 @@ bootSlope.default <-
     }
     
     if(sum(which_plot) == 2) {
-      print(wrap_plots(phist, pqq, ncol = 2))
+      print(patchwork::wrap_plots(phist, pqq, ncol = 2))
     }
     
     temp
