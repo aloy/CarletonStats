@@ -40,6 +40,12 @@ bootPaired(x, ...)
 \item{plot.hist}{logical. If \code{TRUE}, plot the histogram of the
 bootstrap distribution.}
 
+\item{xlab}{an optional character string for the x-axis label}
+
+\item{ylab}{an optional character string for the y-axis label}
+
+\item{title}{an optional character string giving the plot title}
+
 \item{plot.qq}{logical. If \code{TRUE}, a normal quantile-quantile plot of
 the replicates will be created.}
 
@@ -52,13 +58,9 @@ the replicates will be created.}
 \item{data}{a data frame that contains the variables given in the formula.}
 
 \item{subset}{an optional expression indicating what observations to use.}
-
-\item{legend.loc}{location for the legend on the histogram. Options are
-\code{"topright"} \code{"topleft"}, \code{"bottomleft"} and
-\code{"bottomright"}.}
 }
 \value{
-The command invisibly returns a vector with the replicates of the
+The command returns a vector with the replicates of the
 statistic being bootstrapped.
 }
 \description{

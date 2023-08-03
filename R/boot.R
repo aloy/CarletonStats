@@ -21,9 +21,6 @@
 #' @param B number of times to resample (positive integer greater than 2).
 #' @param plot.hist logical value. If \code{TRUE}, plot the histogram of the
 #' bootstrap distribution.
-#' @param legend.loc where to place the legend on the histogram. Default is
-#' \code{"topright"}. Other options include \code{"topleft"},
-#' \code{"bottomleft"} and \code{"bottomright"}.
 #' @param plot.qq Logical value. If \code{TRUE}, create a normal
 #' quantile-quantile plot of the bootstrap distribution.
 #' @param x.name Label for variable name

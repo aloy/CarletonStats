@@ -64,10 +64,6 @@ formula may also be \code{~ y}.}
 \item{data}{a data frame that contains the variables given in the formula.}
 
 \item{subset}{an optional expression indicating what observations to use.}
-
-\item{legend.loc}{where to place the legend on the histogram. Default is
-\code{"topright"}. Other options include \code{"topleft"},
-\code{"bottomleft"} and \code{"bottomright"}.}
 }
 \value{
 A vector with the resampled statistics is returned invisibly.

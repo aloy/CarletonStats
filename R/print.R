@@ -19,13 +19,13 @@ print.carlboot <- function(x, ...) {
       cat(" Observed ", attr(x, "x.name"), ":", round(attr(x, "observed"), 5), "\n")
     }
   } else {
-    if(attr(x, "groups") == "paired") {
-      cat("\n\t**Bootstrap interval for mean of paired difference \n\n")
-      cat(" Observed mean of ", attr(x, "y.name"), "-", attr(x, "x.name"), ":", round(attr(x, "observed"), 5), "\n")
-    } else {
+    if(length(attr(x, "groups")) > 1) {
       cat("\n\t** Bootstrap interval for difference of", attr(x, "statistic"), "\n\n")
       cat(" Observed difference of", attr(x, "statistic"), ":", paste(attr(x, "groups"), collapse = " - "), "=", round(attr(x, "observed"), 5), "\n")
-    }
+    } else {
+      cat("\n\t**Bootstrap interval for mean of paired difference \n\n")
+      cat(" Observed mean of ", attr(x, "y.name"), "-", attr(x, "x.name"), ":", round(attr(x, "observed"), 5), "\n")
+    } 
   }
   cat(" Mean of bootstrap distribution:",  round(mean(x), 5),"\n")
   cat(" Standard error of bootstrap distribution:", round(sd(x), 5),"\n\n")
