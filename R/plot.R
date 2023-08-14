@@ -66,7 +66,7 @@ plot.carlperm <- function(x, bins = 15, size = 5, xlab = NULL, ylab = NULL,
     ggplot2::scale_y_continuous(labels = scales::label_percent(), expand = expansion(mult = c(0.05, .05))) +
     ggplot2::labs(
       title = "Permutation distribution",
-      x = "Differences",
+      x = "Statistics",
       y = "Percentage",
       shape = "",
       color = ""

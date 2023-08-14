@@ -35,7 +35,7 @@ print.carlboot <- function(x, ...) {
   
   if (attr(x, "plot.hist")) {
     if(is.null(title)) {
-      title <- "Bootstrap distribution of correlation"
+      title <- "Bootstrap distribution"
     }
     
     phist <- plot(x, xlab = attr(x, "xlab"), 
@@ -68,17 +68,38 @@ print.carlboot <- function(x, ...) {
 print.carlperm <- function(x, ...) {
   cat("\n\t** Permutation test **\n")
   cat("\n Permutation test with alternative:", attr(x, "alternative"),"\n")
-  cat(" Observed statistic\n")
-  cat(" ", attr(x, "groups")[1], ": ", attr(x, "group.stats")[1], "\t", attr(x, "groups")[2],": ", attr(x, "group.stats")[2],"\n")
-  cat(" Observed difference:", round(attr(x, "observed"), 5), "\n\n")
+  if(attr(x, "statistic") == "F") {
+    cat(" Observed F statistic:", round(attr(x, "observed"), 5), "\n")
+    if(is.null(attr(x, "xlab"))) attr(x, "xlab") <- "F statistics"
+  } else{
+    if(attr(x, "statistic") == "correlation") {
+      cat(" Observed correlation between", attr(x, "x.name"), ", ", attr(x, "y.name"), ":", round(attr(x, "observed"), 5), "\n")
+      if(is.null(attr(x, "xlab"))) attr(x, "xlab") <- "Correlation"
+    } else{
+      if(attr(x, "statistic") == "slope") {
+        cat(" Observed slope between", attr(x, "x.name"), ", ", attr(x, "y.name"), ": ", attr(x, "observed"), "\n")
+        if(is.null(attr(x, "xlab"))) attr(x, "xlab") <- "Slope"
+      } else{
+        if(attr(x, "statistic") == "paired difference") {
+          cat(" Observed mean\n")
+          cat(" ", attr(x, "y.name"), ": ", round(attr(x, "var.stats")[1], 5), "\t", attr(x, "x.name"),": ", round(attr(x, "var.stats")[2], 5),"\n")
+          if(is.null(attr(x, "xlab"))) attr(x, "xlab") <- "Paired differences"
+        } else{
+          cat(" Observed statistic\n")
+          cat(" ", attr(x, "groups")[1], ": ", attr(x, "group.stats")[1], "\t", attr(x, "groups")[2],": ", attr(x, "group.stats")[2],"\n")
+        }
+        cat(" Observed difference:", round(attr(x, "observed"), 5), "\n\n") 
+      }
+    }
+  }
   cat(" Mean of permutation distribution:", round(mean(x), 5), "\n")
-  cat(" Standard error of permutation distribution:", round(mean(x), 5), "\n")
+  cat(" Standard error of permutation distribution:", round(sd(x), 5), "\n")
   cat(" P-value: ", round(attr(x, "pval"), 5),"\n")
   cat("\n\t*-------------*\n\n")
   
   if (attr(x, "plot.hist")) {
     if(is.null(title)) {
-      title <- "Bootstrap distribution of correlation"
+      title <- "Permutation distribution"
     }
     
     phist <- plot(x, xlab = attr(x, "xlab"), 
@@ -90,7 +111,7 @@ print.carlperm <- function(x, ...) {
       geom_qq() + 
       geom_qq_line() +
       theme_classic() +
-      labs(x = "N(0, 1) Quantiles", y = "Bootstrap Statistics")
+      labs(x = "N(0, 1) Quantiles", y = "Permutation Statistics")
   }
   
   which_plot <- c(phist = attr(x, "plot.hist"), pqq = attr(x, "plot.qq"))

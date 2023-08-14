@@ -81,6 +81,7 @@ permTest.default <- function(x, group, statistic = mean,   B = 9999,
   class(result) <- "carlperm"
   attr(result, "observed")  <- observed
   attr(result, "statistic") <- as.character(substitute(statistic))
+  attr(result, "alternative") <- alternative
   attr(result, "groups")    <- levels(group)
   attr(result, "group.stats") <- c(stat(group1), stat(group2))
   attr(result, "pval")      <- P.value
