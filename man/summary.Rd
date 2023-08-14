@@ -2,9 +2,12 @@
 % Please edit documentation in R/summary.R
 \name{summary.carlboot}
 \alias{summary.carlboot}
+\alias{summary.carlperm}
 \title{Print a summary of an \code{carlboot} object}
 \usage{
 \method{summary}{carlboot}(object, ...)
+
+\method{summary}{carlperm}(object, ...)
 }
 \arguments{
 \item{object}{The carlboot object to print.}

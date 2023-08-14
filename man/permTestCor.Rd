@@ -19,6 +19,10 @@ permTestCor(x, ...)
   plot.qq = FALSE,
   x.name = deparse(substitute(x)),
   y.name = deparse(substitute(y)),
+  xlab = NULL,
+  ylab = NULL,
+  title = NULL,
+  seed = NULL,
   ...
 )
 

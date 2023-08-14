@@ -23,3 +23,23 @@ summary.carlboot <- function(object, ...) {
   )
 }
 
+
+#' @rdname summary
+#' @export 
+#' @method summary carlperm
+summary.carlperm <- function(object, ...) {
+  alt <- pmatch(attr(object, "alternative"), c("less", "greater", "two.sided"), nomatch = 4)
+  
+  cat("Replications:", length(object), "\n\n")
+  
+  cat("Summary Statistics of Permutation Distribution:", "\n\n")
+  
+  print(
+    data.frame(
+      Observed = attr(object, "observed"),
+      Mean = mean(object),
+      Alternative = attr(object, "alternative"),
+      `P value` = .calc_pvalue(object, attr(object, "observed"), alt)
+    )
+  )
+}
