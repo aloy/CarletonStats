@@ -2,8 +2,12 @@
 #' @export
 
 permTest.default <- function(x, group, statistic = mean,   B = 9999,
-                             alternative="two.sided", plot.hist = TRUE, legend.loc = "topright", plot.qq=FALSE, ...)
+                             alternative = "two.sided", plot.hist = TRUE, legend.loc = "topright", 
+                             plot.qq = FALSE, xlab = NULL, ylab = NULL, title = NULL, 
+                             seed = NULL,...)
 {
+  
+  if(!is.null(seed)) set.seed(seed)
   
   stat <- match.fun(statistic)
   
@@ -49,30 +53,30 @@ permTest.default <- function(x, group, statistic = mean,   B = 9999,
   
   if (P.value > 1) P.value <- 1
   
-  if (plot.hist){
-    
-    my.title <- paste("Permutation distribution of statistic:\n" ,group1.name, "-", group2.name, sep= " ")
-    out <- hist(result, plot = F)
-    out$density <- 100*out$counts/sum(out$counts)
-    xrange <- range(c(out$breaks, observed))
-    plot(out, freq = FALSE, ,xlim = xrange, main = my.title, ylab = "Percent", cex.main = .9,
-         xlab = "Differences", cex.lab = .9)
-    
-    points(observed, 0, pch = 2, col = "red")
-    points(mean.PermDist, 0, pch = 8, col = "blue")
-    legend(legend.loc, legend = c("Observed", "Permutation"), pch = c(2, 8), col= c("red", "blue"),
-           cex = .9)
-  }
+  # if (plot.hist){
+  #   
+  #   my.title <- paste("Permutation distribution of statistic:\n" ,group1.name, "-", group2.name, sep= " ")
+  #   out <- hist(result, plot = F)
+  #   out$density <- 100*out$counts/sum(out$counts)
+  #   xrange <- range(c(out$breaks, observed))
+  #   plot(out, freq = FALSE, ,xlim = xrange, main = my.title, ylab = "Percent", cex.main = .9,
+  #        xlab = "Differences", cex.lab = .9)
+  #   
+  #   points(observed, 0, pch = 2, col = "red")
+  #   points(mean.PermDist, 0, pch = 8, col = "blue")
+  #   legend(legend.loc, legend = c("Observed", "Permutation"), pch = c(2, 8), col= c("red", "blue"),
+  #          cex = .9)
+  # }
   
-  cat("\n\t** Permutation test **\n")
-  cat("\n Permutation test with alternative:", alternative,"\n")
-  cat(" Observed statistic\n")
-  cat(" ", group1.name, ": ",stat1, "\t", group2.name,": ", stat2,"\n")
-  cat(" Observed difference:", round(observed, 5), "\n\n")
-  cat(" Mean of permutation distribution:", mean.PermDist, "\n")
-  cat(" Standard error of permutation distribution:", sd.PermDist, "\n")
-  cat(" P-value: ", round(P.value, 5),"\n")
-  cat("\n\t*-------------*\n\n")
+  # cat("\n\t** Permutation test **\n")
+  # cat("\n Permutation test with alternative:", alternative,"\n")
+  # cat(" Observed statistic\n")
+  # cat(" ", group1.name, ": ",stat1, "\t", group2.name,": ", stat2,"\n")
+  # cat(" Observed difference:", round(observed, 5), "\n\n")
+  # cat(" Mean of permutation distribution:", mean.PermDist, "\n")
+  # cat(" Standard error of permutation distribution:", sd.PermDist, "\n")
+  # cat(" P-value: ", round(P.value, 5),"\n")
+  # cat("\n\t*-------------*\n\n")
   
   class(result) <- "carlperm"
   attr(result, "observed")  <- observed
@@ -80,6 +84,11 @@ permTest.default <- function(x, group, statistic = mean,   B = 9999,
   attr(result, "groups")    <- levels(group)
   attr(result, "group.stats") <- c(stat(group1), stat(group2))
   attr(result, "pval")      <- P.value
+  attr(result, "xlab")      <- xlab
+  attr(result, "ylab")      <- ylab
+  attr(result, "title")     <- title
+  attr(result, "plot.hist") <- plot.hist
+  attr(result, "plot.qq")   <- plot.qq
   
   result
   

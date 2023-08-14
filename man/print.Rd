@@ -10,12 +10,10 @@
 \method{print}{carlperm}(x, ...)
 }
 \arguments{
-\item{x}{The carlperm object to print.}
+\item{x}{The carlboot object to print.}
 
 \item{...}{not used}
 }
 \description{
 Print summary statistics and confidence intervals for an \code{carlboot} object.
-
-Print summary statistics, standard error, and p-value for a \code{carlperm} object.
 }

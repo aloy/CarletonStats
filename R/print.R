@@ -62,25 +62,44 @@ print.carlboot <- function(x, ...) {
 }
 
 
-#' @title Print a summary of an \code{carlperm} object
-#'
-#' @description
-#' Print summary statistics, standard error, and p-value for a \code{carlperm} object.
-#'
-#' @param x The carlperm object to print.
-#' @param ... not used
-#'
-#' @rdname print
 #' @export 
 #' @method print carlperm
+#' @rdname print
 print.carlperm <- function(x, ...) {
   cat("\n\t** Permutation test **\n")
   cat("\n Permutation test with alternative:", attr(x, "alternative"),"\n")
   cat(" Observed statistic\n")
-  cat(" ", attr(x, "groups")[1], ": ", attr(x, "group.stats")[1], "\t", attr(x, "groups")[1],": ", attr(x, "group.stats")[2],"\n")
+  cat(" ", attr(x, "groups")[1], ": ", attr(x, "group.stats")[1], "\t", attr(x, "groups")[2],": ", attr(x, "group.stats")[2],"\n")
   cat(" Observed difference:", round(attr(x, "observed"), 5), "\n\n")
   cat(" Mean of permutation distribution:", round(mean(x), 5), "\n")
   cat(" Standard error of permutation distribution:", round(mean(x), 5), "\n")
   cat(" P-value: ", round(attr(x, "pval"), 5),"\n")
   cat("\n\t*-------------*\n\n")
+  
+  if (attr(x, "plot.hist")) {
+    if(is.null(title)) {
+      title <- "Bootstrap distribution of correlation"
+    }
+    
+    phist <- plot(x, xlab = attr(x, "xlab"), 
+                  ylab = attr(x, "ylab"), title = attr(x, "title"))
+  }
+  
+  if(attr(x, "plot.qq")) {
+    pqq <- ggplot(data = NULL, aes(sample = as.numeric(x))) +
+      geom_qq() + 
+      geom_qq_line() +
+      theme_classic() +
+      labs(x = "N(0, 1) Quantiles", y = "Bootstrap Statistics")
+  }
+  
+  which_plot <- c(phist = attr(x, "plot.hist"), pqq = attr(x, "plot.qq"))
+  
+  if(sum(which_plot) == 1) {
+    print(get(names(which(which_plot))))
+  }
+  
+  if(sum(which_plot) == 2) {
+    print(patchwork::wrap_plots(phist, pqq, ncol = 2))
+  }
 }

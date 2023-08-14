@@ -2,9 +2,12 @@
 % Please edit documentation in R/plot.R
 \name{plot.carlboot}
 \alias{plot.carlboot}
+\alias{plot.carlperm}
 \title{Plot the bootstrap distribution in \code{carlboot} object}
 \usage{
 \method{plot}{carlboot}(x, bins = 15, size = 5, xlab = NULL, ylab = NULL, title = NULL, ...)
+
+\method{plot}{carlperm}(x, bins = 15, size = 5, xlab = NULL, ylab = NULL, title = NULL, ...)
 }
 \arguments{
 \item{x}{The carlboot object to print.}

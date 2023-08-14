@@ -18,6 +18,10 @@ permTest(x, ...)
   plot.hist = TRUE,
   legend.loc = "topright",
   plot.qq = FALSE,
+  xlab = NULL,
+  ylab = NULL,
+  title = NULL,
+  seed = NULL,
   ...
 )
 
