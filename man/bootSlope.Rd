@@ -54,7 +54,7 @@ plot of the bootstraped values is created.}
 
 \item{y.name}{Label for variable y}
 
-\item{seed}{optional argument to \linkto{set.seed}}
+\item{seed}{optional argument to \code{\link{set.seed}}}
 
 \item{formula}{a formula of the form lhs ~ rhs where lhs is a numeric variable 
 giving the data values and rhs a factor with two levels giving the corresponding groups.}

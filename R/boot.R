@@ -19,7 +19,7 @@
 #' @param conf.level confidence level for the bootstrap percentile interval.
 #' Default is 95\%.
 #' @param B number of times to resample (positive integer greater than 2).
-#' @param seed optional argument to \linkto{set.seed}
+#' @param seed optional argument to \code{\link{set.seed}}
 #' @param plot.hist logical value. If \code{TRUE}, plot the histogram of the
 #' bootstrap distribution.
 #' @param plot.qq Logical value. If \code{TRUE}, create a normal

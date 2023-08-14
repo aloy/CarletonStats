@@ -25,7 +25,7 @@
 #' @param xlab an optional character string for the x-axis label
 #' @param ylab an optional character string for the y-axis label
 #' @param title an optional character string giving the plot title
-#' @param seed optional argument to \linkto{set.seed}
+#' @param seed optional argument to \code{\link{set.seed}}
 #' @param \dots further arguments to be passed to or from methods.
 #' @return The command returns a vector with the replicates of the
 #' statistic being bootstrapped.

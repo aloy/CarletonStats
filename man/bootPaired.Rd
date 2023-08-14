@@ -54,7 +54,7 @@ the replicates will be created.}
 
 \item{y.name}{Label for variable y}
 
-\item{seed}{optional argument to \linkto{set.seed}}
+\item{seed}{optional argument to \code{\link{set.seed}}}
 
 \item{formula}{a formula \code{y ~ x} where \code{x, y} are both numeric vectors}
 

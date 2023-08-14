@@ -69,32 +69,12 @@ bootCor.default <-
     attr(temp, "x.name")    <- x.name
     attr(temp, "y.name")    <- y.name
     attr(temp, "level")     <- conf.level
+    attr(temp, "xlab")      <- xlab
+    attr(temp, "ylab")      <- ylab
+    attr(temp, "title")     <- title
+    attr(temp, "plot.hist") <- plot.hist
+    attr(temp, "plot.qq")   <- plot.qq
     
-    if (plot.hist) {
-      if(is.null(title)) {
-        title <- "Bootstrap distribution of correlation"
-      }
-      
-      phist <- plot(temp, xlab = xlab, ylab = ylab, title = title)
-    }
-    
-    if(plot.qq) {
-      pqq <- ggplot(data = NULL, aes(sample = as.numeric(temp))) +
-        geom_qq() + 
-        geom_qq_line() +
-        theme_classic() +
-        labs(x = "N(0, 1) Quantiles", y = "Bootstrap Statistics")
-    }
-    
-    which_plot <- c(phist = plot.hist, pqq = plot.qq)
-    
-    if(sum(which_plot) == 1) {
-      print(get(names(which(which_plot))))
-    }
-    
-    if(sum(which_plot) == 2) {
-      print(patchwork::wrap_plots(phist, pqq, ncol = 2))
-    }
     
     temp
     
