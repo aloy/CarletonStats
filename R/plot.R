@@ -16,6 +16,10 @@
 #' @method plot carlboot
 #' @importFrom scales label_percent
 #' @importFrom stats density
+#' @examples
+#'
+#' boot_dist <- boot(ToothGrowth$len, ToothGrowth$supp, B = 1000)
+#' plot(boot_dist)
 plot.carlboot <- function(x, bins = 15, size = 5, xlab = NULL, ylab = NULL, 
                           title = NULL, ...) {
   boot_stats <- as.numeric(x)
@@ -55,6 +59,10 @@ plot.carlboot <- function(x, bins = 15, size = 5, xlab = NULL, ylab = NULL,
 #' @export 
 #' @method plot carlperm
 #' @rdname plot
+#' @examples
+#'
+#' perm_dist <- permTest(states03$ViolentCrime, states03$DeathPenalty, B = 999)
+#' plot(perm_dist)
 plot.carlperm <- function(x, bins = 15, size = 5, xlab = NULL, ylab = NULL, 
                           title = NULL, ...) {
   boot_stats <- as.numeric(x)

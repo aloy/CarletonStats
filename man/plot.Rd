@@ -27,3 +27,11 @@
 \description{
 Plot the bootstrap distribution returned as a \code{carlboot} object.
 }
+\examples{
+
+boot_dist <- boot(ToothGrowth$len, ToothGrowth$supp, B = 1000)
+plot(boot_dist)
+
+perm_dist <- permTest(states03$ViolentCrime, states03$DeathPenalty, B = 999)
+plot(perm_dist)
+}

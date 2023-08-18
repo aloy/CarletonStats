@@ -17,3 +17,9 @@
 \description{
 Print summary statistics and confidence intervals, if desired, for an \code{lmeresamp} object.
 }
+\examples{
+boot_dist <- boot(ToothGrowth$len, ToothGrowth$supp, B = 1000)
+summary(boot_dist)
+perm_dist <- permTest(states03$ViolentCrime, states03$DeathPenalty, B = 999)
+summary(perm_dist)
+}

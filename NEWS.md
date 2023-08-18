@@ -1,8 +1,10 @@
 # CarletonStats (development version)
 
-* The `boot*()` functions now return the bootstrap statistics as a `carlboot` object, which has `print`, `summary`, and `confint` methods.
+* The `boot*()` functions now return the bootstrap statistics as a `carlboot` object, which has `print`, `plot`, `summary`, and `confint` methods.
 
-* Additional arguments were added to the `boot*()` functions: `xlab`, `ylab`, `title`, `seed`.
+* The `permTest*()` functions now return the bootstrap statistics as a `carlperm` object, which has `print`, `plot`, and `summary` methods.
+
+* Additional arguments were added to the `boot*()` and `permTest*() functions: `xlab`, `ylab`, `title`, `seed`.
 
 * Some arguments were deleted from the `boot*()` functions: `legend.loc` (just use ggplot2 theme if needed), `hist.title` (now use `title`)
 

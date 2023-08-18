@@ -3,7 +3,7 @@
 #' @export
 
 permTestAnova.default <- function(x, group, B = 9999, plot.hist = TRUE, 
-                             legend.loc = "topright", plot.qq = FALSE, 
+                             plot.qq = FALSE, 
                              xlab = NULL, ylab = NULL, title = NULL, seed = NULL,...)
 {
   
@@ -62,9 +62,12 @@ permTestAnova.default <- function(x, group, B = 9999, plot.hist = TRUE,
   # cat(" P-value: ", round(P.value, 5),"\n")
   # cat("\n\t*-------------*\n\n")
   
+  df1 <- length(unique(group)) - 1
+  
   class(result) <- "carlperm"
   attr(result, "observed")  <- observed
   attr(result, "statistic") <- "F"
+  attr(result, "df") <- c(df1, n - df1 - 1)
   attr(result, "groups")    <- levels(group)
   attr(result, "alternative") <- "greater"
   # attr(result, "group.stats") <- c(stat(group1), stat(group2))

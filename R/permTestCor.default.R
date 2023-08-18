@@ -3,7 +3,7 @@
 
 permTestCor.default <-
 function(x, y,  B = 999,
-     alternative = "two.sided",  plot.hist = TRUE, legend.loc = "topright", plot.qq = FALSE,
+     alternative = "two.sided",  plot.hist = TRUE, plot.qq = FALSE,
         x.name = deparse(substitute(x)), y.name = deparse(substitute(y)), 
      xlab = NULL, ylab = NULL, title = NULL, 
      seed = NULL, ...) {

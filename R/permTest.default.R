@@ -2,7 +2,7 @@
 #' @export
 
 permTest.default <- function(x, group, statistic = mean,   B = 9999,
-                             alternative = "two.sided", plot.hist = TRUE, legend.loc = "topright", 
+                             alternative = "two.sided", plot.hist = TRUE,
                              plot.qq = FALSE, xlab = NULL, ylab = NULL, title = NULL, 
                              seed = NULL,...)
 {
