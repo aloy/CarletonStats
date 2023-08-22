@@ -1,4 +1,4 @@
-# CarletonStats (development version)
+# CarletonStats 2.2
 
 * The `boot*()` functions now return the bootstrap statistics as a `carlboot` object, which has `print`, `plot`, `summary`, and `confint` methods.
 
