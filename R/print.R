@@ -94,7 +94,7 @@ print.carlperm <- function(x, ...) {
   }
   cat(" Mean of permutation distribution:", round(mean(x), 5), "\n")
   cat(" Standard error of permutation distribution:", round(sd(x), 5), "\n")
-  cat(" P-value: ", round(attr(x, "pval"), 5),"\n")
+  cat(" P-value: ", formatC(attr(x, "pval"), digits = 5),"\n")
   cat("\n\t*-------------*\n\n")
   
   if (attr(x, "plot.hist")) {
