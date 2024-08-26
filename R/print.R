@@ -82,7 +82,7 @@ print.carlperm <- function(x, ...) {
       } else{
         if(attr(x, "statistic") == "paired difference") {
           cat(" Observed mean\n")
-          cat(" ", attr(x, "y.name"), ": ", round(attr(x, "var.stats")[1], 5), "\t", attr(x, "x.name"),": ", round(attr(x, "var.stats")[2], 5),"\n")
+          cat(" ", attr(x, "x.name"), ": ", round(attr(x, "var.stats")[2], 5), "\t", attr(x, "y.name"),": ", round(attr(x, "var.stats")[1], 5),"\n")
           if(is.null(attr(x, "xlab"))) attr(x, "xlab") <- "Paired differences"
         } else{
           cat(" Observed statistic\n")

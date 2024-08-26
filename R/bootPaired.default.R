@@ -25,7 +25,7 @@ bootPaired.default <-
     x2 <- x[comCases]
     y2 <- y[comCases]
     
-    Diff <- y2 - x2
+    Diff <- x2 - y2
     n <- length(Diff)
     observed <- mean(Diff)
     
