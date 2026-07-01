@@ -49,10 +49,7 @@
 #'
 #' @export
 
-
 permTest <-
-function(x, ...){
-
-UseMethod("permTest")
-
-}
+  function(x, ...) {
+    UseMethod("permTest")
+  }

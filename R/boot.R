@@ -58,8 +58,6 @@
 #' @export
 
 boot <-
-function(x,  ...)
-{
-  UseMethod("boot")
-
-}
+  function(x, ...) {
+    UseMethod("boot")
+  }
