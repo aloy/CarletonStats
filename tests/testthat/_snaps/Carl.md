@@ -16,6 +16,24 @@
       
       		*--------------*
 
+# boot() two-group print output is stable
+
+    Code
+      print(result)
+    Output
+      
+      	** Bootstrap interval for difference of mean 
+      
+       Observed difference of mean : OJ - VC = 3.7 
+       Mean of bootstrap distribution: 3.65638 
+       Standard error of bootstrap distribution: 1.84858 
+      
+       Bootstrap percentile interval
+           2.5%     97.5% 
+      -0.113500  7.187833 
+      
+      		*--------------*
+
 # bootPaired() print output is stable
 
     Code

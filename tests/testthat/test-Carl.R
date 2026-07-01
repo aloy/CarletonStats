@@ -44,6 +44,17 @@ test_that("boot() print output is stable", {
   expect_snapshot(print(result))
 })
 
+test_that("boot() two-group print output is stable", {
+  result <- boot(
+    ToothGrowth$len,
+    ToothGrowth$supp,
+    B = 500,
+    seed = 1,
+    plot.hist = FALSE
+  )
+  expect_snapshot(print(result))
+})
+
 ## bootPaired() ----------------------------------------------------------
 
 test_that("bootPaired() statistic attribute is 'mean'", {
@@ -478,6 +489,45 @@ test_that("plot.carlperm() returns a ggplot object", {
     plot.hist = FALSE
   )
   expect_s3_class(plot(result), "gg")
+})
+
+test_that("print.carlboot() with plot.hist = TRUE runs without error", {
+  result <- boot(ToothGrowth$len, B = 200, seed = 1, plot.hist = TRUE)
+  expect_no_error(print(result))
+})
+
+test_that("print.carlboot() with plot.hist and plot.qq runs without error", {
+  result <- boot(
+    ToothGrowth$len,
+    B = 200,
+    seed = 1,
+    plot.hist = TRUE,
+    plot.qq = TRUE
+  )
+  expect_no_error(print(result))
+})
+
+test_that("print.carlperm() with plot.hist = TRUE runs without error", {
+  result <- permTest(
+    states03$ViolentCrime,
+    states03$DeathPenalty,
+    B = 500,
+    seed = 1,
+    plot.hist = TRUE
+  )
+  expect_no_error(print(result))
+})
+
+test_that("print.carlperm() with plot.hist and plot.qq runs without error", {
+  result <- permTest(
+    states03$ViolentCrime,
+    states03$DeathPenalty,
+    B = 500,
+    seed = 1,
+    plot.hist = TRUE,
+    plot.qq = TRUE
+  )
+  expect_no_error(print(result))
 })
 
 ## summary() -------------------------------------------------------------
