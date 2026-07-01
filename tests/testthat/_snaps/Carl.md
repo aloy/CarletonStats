@@ -103,9 +103,9 @@
         Icecream$VanillaCalories :  198.7436 	 Icecream$ChocCalories :  191.4103 
        Observed difference: -7.33333 
       
-       Mean of permutation distribution: 0.15677 
-       Standard error of permutation distribution: 2.30473 
-       P-value:   0.001 
+       Mean of permutation distribution: -0.05513 
+       Standard error of permutation distribution: 2.38151 
+       P-value:   0.002 
       
       	*-------------*
       
@@ -137,8 +137,8 @@
       
        Permutation test with alternative: two.sided 
        Observed correlation between Icecream$VanillaCalories ,  Icecream$ChocCalories : 0.98 
-       Mean of permutation distribution: 0.00038 
-       Standard error of permutation distribution: 0.16423 
+       Mean of permutation distribution: 0.00089 
+       Standard error of permutation distribution: 0.16395 
        P-value:   0.001 
       
       	*-------------*

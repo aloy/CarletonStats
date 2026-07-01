@@ -17,6 +17,10 @@ permTestCor.default <-
     seed = NULL,
     ...
   ) {
+    if (!is.null(seed)) {
+      set.seed(seed)
+    }
+
     if (!is.numeric(x)) {
       stop("Variable 1 must be numeric")
     }

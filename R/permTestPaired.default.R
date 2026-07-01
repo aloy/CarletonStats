@@ -17,6 +17,10 @@ permTestPaired.default <-
     seed = NULL,
     ...
   ) {
+    if (!is.null(seed)) {
+      set.seed(seed)
+    }
+
     if (!is.numeric(x) || !is.numeric(y)) {
       stop("Both variables must be numeric.")
     }

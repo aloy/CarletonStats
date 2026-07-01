@@ -174,6 +174,24 @@ test_that("bootSlope() print output is stable", {
   expect_snapshot(print(result))
 })
 
+test_that("bootSlope() formula and default interfaces match", {
+  r1 <- bootSlope(
+    VanillaCalories ~ ChocCalories,
+    data = Icecream,
+    B = 200,
+    seed = 3,
+    plot.hist = FALSE
+  )
+  r2 <- bootSlope(
+    Icecream$ChocCalories,
+    Icecream$VanillaCalories,
+    B = 200,
+    seed = 3,
+    plot.hist = FALSE
+  )
+  expect_equal(as.numeric(r1), as.numeric(r2))
+})
+
 ## permTest() ------------------------------------------------------------
 
 test_that("permTest() returns carlperm with p-value in [0, 1]", {
@@ -241,6 +259,24 @@ test_that("permTestPaired() print output is stable", {
   expect_snapshot(print(result))
 })
 
+test_that("permTestPaired() formula and default interfaces match", {
+  r1 <- permTestPaired(
+    VanillaCalories ~ ChocCalories,
+    data = Icecream,
+    B = 500,
+    seed = 5,
+    plot.hist = FALSE
+  )
+  r2 <- permTestPaired(
+    Icecream$ChocCalories,
+    Icecream$VanillaCalories,
+    B = 500,
+    seed = 5,
+    plot.hist = FALSE
+  )
+  expect_equal(as.numeric(r1), as.numeric(r2))
+})
+
 ## permTestAnova() -------------------------------------------------------
 
 test_that("permTestAnova() statistic attribute is 'F'", {
@@ -277,6 +313,24 @@ test_that("permTestAnova() print output is stable", {
     plot.hist = FALSE
   )
   expect_snapshot(print(result))
+})
+
+test_that("permTestAnova() formula and default interfaces match", {
+  r1 <- permTestAnova(
+    weight ~ feed,
+    data = chickwts,
+    B = 500,
+    seed = 5,
+    plot.hist = FALSE
+  )
+  r2 <- permTestAnova(
+    chickwts$weight,
+    chickwts$feed,
+    B = 500,
+    seed = 5,
+    plot.hist = FALSE
+  )
+  expect_equal(as.numeric(r1), as.numeric(r2))
 })
 
 ## permTestCor() ---------------------------------------------------------
@@ -317,6 +371,24 @@ test_that("permTestCor() print output is stable", {
   expect_snapshot(print(result))
 })
 
+test_that("permTestCor() formula and default interfaces match", {
+  r1 <- permTestCor(
+    VanillaCalories ~ ChocCalories,
+    data = Icecream,
+    B = 500,
+    seed = 5,
+    plot.hist = FALSE
+  )
+  r2 <- permTestCor(
+    Icecream$ChocCalories,
+    Icecream$VanillaCalories,
+    B = 500,
+    seed = 5,
+    plot.hist = FALSE
+  )
+  expect_equal(as.numeric(r1), as.numeric(r2))
+})
+
 ## permTestSlope() -------------------------------------------------------
 
 test_that("permTestSlope() statistic attribute is 'slope'", {
@@ -341,6 +413,24 @@ test_that("permTestSlope() print output is stable", {
   expect_snapshot(print(result))
 })
 
+test_that("permTestSlope() formula and default interfaces match", {
+  r1 <- permTestSlope(
+    VanillaCalories ~ ChocCalories,
+    data = Icecream,
+    B = 500,
+    seed = 5,
+    plot.hist = FALSE
+  )
+  r2 <- permTestSlope(
+    Icecream$ChocCalories,
+    Icecream$VanillaCalories,
+    B = 500,
+    seed = 5,
+    plot.hist = FALSE
+  )
+  expect_equal(as.numeric(r1), as.numeric(r2))
+})
+
 ## anovaSummarized() -----------------------------------------------------
 
 test_that("anovaSummarized() output is stable", {
@@ -362,4 +452,12 @@ test_that("groupedBar() single variable returns invisibly", {
 
 test_that("groupedBar() two-variable returns invisibly", {
   expect_invisible(groupedBar(factor(mtcars$am), factor(mtcars$cyl)))
+})
+
+test_that("groupedBar() single-variable formula returns invisibly", {
+  expect_invisible(groupedBar(~cyl, data = mtcars))
+})
+
+test_that("groupedBar() two-variable formula returns invisibly", {
+  expect_invisible(groupedBar(am ~ cyl, data = mtcars))
 })
