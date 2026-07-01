@@ -1,3 +1,9 @@
+# CarletonStats 2.3
+
+* `permTestCor()` and `permTestPaired()` had a `seed` argument that was silently ignored, making results non-reproducible. The `seed` argument now correctly sets the random seed before the permutation loop.
+
+* Minimum R version is now declared as R (>= 3.5.0) and minimum ggplot2 version as 3.3.0 in `DESCRIPTION`.
+
 # CarletonStats 2.2
 
 * The `boot*()` functions now return the bootstrap statistics as a `carlboot` object, which has `print`, `plot`, `summary`, and `confint` methods.
