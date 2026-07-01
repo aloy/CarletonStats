@@ -324,6 +324,86 @@ test_that("permTest() warns when success is passed with numeric x", {
   )
 })
 
+test_that("boot() single proportion observed matches manual calculation", {
+  result <- boot(
+    penguin_survival$Status,
+    success = "Survived", B = 500, seed = 1, plot.hist = FALSE
+  )
+  expect_equal(attr(result, "statistic"), "proportion")
+  expect_equal(attr(result, "observed"), mean(penguin_survival$Status == "Survived"))
+})
+
+test_that("boot() single proportion default success uses second factor level", {
+  result <- boot(
+    penguin_survival$Status,
+    B = 500, seed = 1, plot.hist = FALSE
+  )
+  expected_success <- levels(factor(penguin_survival$Status))[2]
+  expect_equal(attr(result, "observed"), mean(penguin_survival$Status == expected_success))
+})
+
+test_that("boot() two-group proportion observed matches manual calculation", {
+  result <- boot(
+    penguin_survival$Status, penguin_survival$TagType,
+    success = "Survived", B = 500, seed = 1, plot.hist = FALSE
+  )
+  electronic <- penguin_survival$Status[penguin_survival$TagType == "Electronic"]
+  metal <- penguin_survival$Status[penguin_survival$TagType == "Metal"]
+  expected_obs <- mean(electronic == "Survived") - mean(metal == "Survived")
+  expect_equal(attr(result, "observed"), expected_obs)
+})
+
+test_that("boot() proportion formula and default interfaces match", {
+  r1 <- boot(
+    Status ~ TagType, data = penguin_survival,
+    success = "Survived", B = 200, seed = 7, plot.hist = FALSE
+  )
+  r2 <- boot(
+    penguin_survival$Status, penguin_survival$TagType,
+    success = "Survived", B = 200, seed = 7, plot.hist = FALSE
+  )
+  expect_equal(as.numeric(r1), as.numeric(r2))
+})
+
+test_that("permTest() proportion observed matches manual calculation", {
+  result <- permTest(
+    penguin_survival$Status, penguin_survival$TagType,
+    success = "Survived", B = 999, seed = 1, plot.hist = FALSE
+  )
+  electronic <- penguin_survival$Status[penguin_survival$TagType == "Electronic"]
+  metal <- penguin_survival$Status[penguin_survival$TagType == "Metal"]
+  expected_obs <- mean(electronic == "Survived") - mean(metal == "Survived")
+  expect_equal(attr(result, "observed"), expected_obs)
+})
+
+test_that("permTest() proportion formula and default interfaces match", {
+  r1 <- permTest(
+    Status ~ TagType, data = penguin_survival,
+    success = "Survived", B = 499, seed = 3, plot.hist = FALSE
+  )
+  r2 <- permTest(
+    penguin_survival$Status, penguin_survival$TagType,
+    success = "Survived", B = 499, seed = 3, plot.hist = FALSE
+  )
+  expect_equal(as.numeric(r1), as.numeric(r2))
+})
+
+test_that("boot() penguin proportion print output is stable", {
+  result <- boot(
+    penguin_survival$Status, penguin_survival$TagType,
+    success = "Survived", B = 500, seed = 1, plot.hist = FALSE
+  )
+  expect_snapshot(print(result))
+})
+
+test_that("permTest() penguin proportion print output is stable", {
+  result <- permTest(
+    penguin_survival$Status, penguin_survival$TagType,
+    success = "Survived", B = 999, seed = 1, plot.hist = FALSE
+  )
+  expect_snapshot(print(result))
+})
+
 ## permTestPaired() ------------------------------------------------------
 
 test_that("permTestPaired() statistic attribute is 'paired difference'", {

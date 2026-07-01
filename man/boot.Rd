@@ -109,6 +109,19 @@ boot(ToothGrowth$len, ToothGrowth$supp, B = 1000)
 #same as above using formula syntax
 boot(len ~ supp, data = ToothGrowth, B = 1000)
 
+# Penguin Survival proportion
+boot(penguin_survival$Status, data = penguin_survival, B = 1000)
+
+# same as above, but with the formula syntax
+boot(~Status, data = penguin_survival, B = 1000)
+
+# Penguin Survival if tagged vs. untagged
+# bootstrap difference in proportions of survival
+boot(penguin_survival$Status, penguin_survival$TagType, B = 1000)
+
+# now using the formula syntax
+boot(Status ~ TagType, data = penguin_survival, B = 1000)
+
 }
 \references{
 Tim Hesterberg's website

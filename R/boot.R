@@ -58,6 +58,19 @@
 #' #same as above using formula syntax
 #' boot(len ~ supp, data = ToothGrowth, B = 1000)
 #'
+#' # Penguin Survival proportion
+#' boot(penguin_survival$Status, data = penguin_survival, B = 1000)
+#'
+#' # same as above, but with the formula syntax
+#' boot(~Status, data = penguin_survival, B = 1000)
+#'
+#' # Penguin Survival if tagged vs. untagged
+#' # bootstrap difference in proportions of survival
+#' boot(penguin_survival$Status, penguin_survival$TagType, B = 1000)
+#'
+#' # now using the formula syntax
+#' boot(Status ~ TagType, data = penguin_survival, B = 1000)
+#'
 #' @importFrom stats complete.cases sd terms quantile
 #' @importFrom graphics abline hist legend lines mtext par plot points title
 #' @importFrom grDevices dev.new

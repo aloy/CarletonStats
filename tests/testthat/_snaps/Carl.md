@@ -146,6 +146,44 @@
       	*-------------*
       
 
+# boot() penguin proportion print output is stable
+
+    Code
+      print(result)
+    Output
+      
+      	** Bootstrap interval for difference of proportion 
+      
+       Observed difference of proportion : Electronic - Metal = 0.16218 
+       Mean of bootstrap distribution: 0.16402 
+       Standard error of bootstrap distribution: 0.04676 
+      
+       Bootstrap percentile interval
+            2.5%      97.5% 
+      0.08162009 0.25347876 
+      
+      		*--------------*
+
+# permTest() penguin proportion print output is stable
+
+    Code
+      print(result)
+    Output
+      
+      	** Permutation test **
+      
+       Permutation test with alternative: two.sided 
+       Observed proportion 
+        Electronic :  0.3597884 	 Metal :  0.1976048 
+       Observed difference: 0.16218 
+      
+       Mean of permutation distribution: -0.00234 
+       Standard error of permutation distribution: 0.04836 
+       P-value:   0.002 
+      
+      	*-------------*
+      
+
 # permTestPaired() print output is stable
 
     Code

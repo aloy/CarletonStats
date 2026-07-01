@@ -27,6 +27,8 @@ boot.default <-
       stop("B must be a positive integer")
     }
 
+    x.name <- x.name  # force before x may be modified below
+
     stat <- match.fun(statistic)
 
     is_proportion <- FALSE

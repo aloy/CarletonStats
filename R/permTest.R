@@ -46,10 +46,17 @@
 #' @keywords permutation test resampling randomization
 #' @examples
 #'
+#' # Testing the difference in means
 #' permTest(states03$ViolentCrime, states03$DeathPenalty)
 #'
 #' #using formula syntax
 #' permTest(ViolentCrime ~ DeathPenalty, data = states03, alt = "less")
+#'
+#' # Testing the difference in proportions
+#' permTest(penguin_survival$Status, penguin_survival$TagType, B = 999)
+#'
+#' #using formula syntax
+#' permTest(Status ~ TagType, data = penguin_survival, B = 999)
 #'
 #' @export
 
