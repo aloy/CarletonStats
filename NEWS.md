@@ -1,5 +1,7 @@
 # CarletonStats 2.3
 
+* `boot()` and `permTest()` now accept logical, factor, and character response variables with exactly two levels. A new `success` argument specifies which level is coded as 1 (proportion). A message confirms the coding chosen.
+
 * `permTestCor()` and `permTestPaired()` had a `seed` argument that was silently ignored, making results non-reproducible. The `seed` argument now correctly sets the random seed before the permutation loop.
 
 * Minimum R version is now declared as R (>= 3.5.0) and minimum ggplot2 version as 3.3.0 in `DESCRIPTION`.

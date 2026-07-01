@@ -7,6 +7,7 @@ boot.default <-
     x,
     group = NULL,
     statistic = mean,
+    success = NULL,
     conf.level = 0.95,
     B = 10000,
     plot.hist = TRUE,
@@ -28,8 +29,13 @@ boot.default <-
 
     stat <- match.fun(statistic)
 
+    is_proportion <- FALSE
     if (!is.numeric(x)) {
-      stop("Variable must be numeric.")
+      enc <- .encode_binary(x, success)
+      x <- enc$x
+      is_proportion <- TRUE
+    } else if (!is.null(success)) {
+      warning("'success' is ignored when x is numeric.")
     }
 
     #Boot for single numerical variable
@@ -105,7 +111,7 @@ boot.default <-
 
     class(temp) <- "carlboot"
     attr(temp, "observed") <- observed
-    attr(temp, "statistic") <- as.character(substitute(statistic))
+    attr(temp, "statistic") <- if (is_proportion) "proportion" else as.character(substitute(statistic))
     attr(temp, "groups") <- levels(group)
     attr(temp, "x.name") <- x.name
     attr(temp, "level") <- conf.level

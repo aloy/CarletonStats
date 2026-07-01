@@ -151,7 +151,7 @@ print.carlperm <- function(x, ...) {
           )
           if (is.null(attr(x, "xlab"))) attr(x, "xlab") <- "Paired differences"
         } else {
-          cat(" Observed statistic\n")
+          cat(" Observed", attr(x, "statistic"), "\n")
           cat(
             " ",
             attr(x, "groups")[1],

@@ -246,6 +246,84 @@ test_that("permTest() print output is stable", {
   expect_snapshot(print(result))
 })
 
+test_that("boot() categorical single variable returns proportion statistic", {
+  x <- c("yes", "no", "yes", "yes", "no", "yes")
+  result <- boot(x, success = "yes", B = 500, seed = 1, plot.hist = FALSE)
+  expect_s3_class(result, "carlboot")
+  expect_equal(attr(result, "statistic"), "proportion")
+  expect_equal(attr(result, "observed"), mean(x == "yes"))
+})
+
+test_that("boot() categorical two-group uses proportion statistic", {
+  x <- c("yes", "no", "yes", "no", "yes", "no")
+  g <- c("A", "A", "A", "B", "B", "B")
+  result <- boot(x, g, success = "yes", B = 500, seed = 1, plot.hist = FALSE)
+  expect_equal(attr(result, "statistic"), "proportion")
+  expected_obs <- mean(x[g == "A"] == "yes") - mean(x[g == "B"] == "yes")
+  expect_equal(attr(result, "observed"), expected_obs)
+})
+
+test_that("boot() logical vector uses TRUE as default success", {
+  x <- c(TRUE, FALSE, TRUE, TRUE, FALSE)
+  result <- boot(x, B = 500, seed = 1, plot.hist = FALSE)
+  expect_equal(attr(result, "statistic"), "proportion")
+  expect_equal(attr(result, "observed"), mean(x))
+})
+
+test_that("boot() factor variable uses second level as default success", {
+  x <- factor(c("no", "yes", "yes", "no", "yes"))
+  result <- boot(x, B = 500, seed = 1, plot.hist = FALSE)
+  expect_equal(attr(result, "statistic"), "proportion")
+  expect_equal(attr(result, "observed"), mean(x == "yes"))
+})
+
+test_that("boot() errors when success is not a valid level", {
+  x <- c("yes", "no", "yes")
+  expect_error(
+    boot(x, success = "maybe", B = 100, seed = 1, plot.hist = FALSE),
+    "not a level"
+  )
+})
+
+test_that("boot() warns when success is passed with numeric x", {
+  expect_warning(
+    boot(ToothGrowth$len, success = "A", B = 100, seed = 1, plot.hist = FALSE),
+    "ignored"
+  )
+})
+
+test_that("boot() categorical print output is stable", {
+  x <- c("yes", "no", "yes", "yes", "no", "yes", "no", "yes")
+  g <- c("A", "A", "A", "A", "B", "B", "B", "B")
+  result <- boot(x, g, success = "yes", B = 500, seed = 1, plot.hist = FALSE)
+  expect_snapshot(print(result))
+})
+
+test_that("permTest() categorical variable returns proportion statistic", {
+  x <- c("yes", "no", "yes", "no", "yes", "no", "yes", "no")
+  g <- c("A", "A", "A", "A", "B", "B", "B", "B")
+  result <- permTest(x, g, success = "yes", B = 499, seed = 1, plot.hist = FALSE)
+  expect_s3_class(result, "carlperm")
+  expect_equal(attr(result, "statistic"), "proportion")
+})
+
+test_that("permTest() categorical print output is stable", {
+  x <- c("yes", "no", "yes", "no", "yes", "no", "yes", "no")
+  g <- c("A", "A", "A", "A", "B", "B", "B", "B")
+  result <- permTest(x, g, success = "yes", B = 499, seed = 1, plot.hist = FALSE)
+  expect_snapshot(print(result))
+})
+
+test_that("permTest() warns when success is passed with numeric x", {
+  expect_warning(
+    permTest(
+      states03$ViolentCrime, states03$DeathPenalty,
+      success = "A", B = 99, seed = 1, plot.hist = FALSE
+    ),
+    "ignored"
+  )
+})
+
 ## permTestPaired() ------------------------------------------------------
 
 test_that("permTestPaired() statistic attribute is 'paired difference'", {

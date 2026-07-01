@@ -5,6 +5,7 @@ permTest.default <- function(
   x,
   group,
   statistic = mean,
+  success = NULL,
   B = 9999,
   alternative = "two.sided",
   plot.hist = TRUE,
@@ -21,8 +22,13 @@ permTest.default <- function(
 
   stat <- match.fun(statistic)
 
+  is_proportion <- FALSE
   if (!is.numeric(x)) {
-    stop("Variable must be numeric.")
+    enc <- .encode_binary(x, success)
+    x <- enc$x
+    is_proportion <- TRUE
+  } else if (!is.null(success)) {
+    warning("'success' is ignored when x is numeric.")
   }
   if (is.factor(group)) {
     group <- droplevels(group)
@@ -70,7 +76,7 @@ permTest.default <- function(
 
   class(result) <- "carlperm"
   attr(result, "observed") <- observed
-  attr(result, "statistic") <- as.character(substitute(statistic))
+  attr(result, "statistic") <- if (is_proportion) "proportion" else as.character(substitute(statistic))
   attr(result, "alternative") <- alternative
   attr(result, "groups") <- levels(group)
   attr(result, "group.stats") <- c(stat(group1), stat(group2))

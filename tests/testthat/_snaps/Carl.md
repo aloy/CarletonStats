@@ -97,13 +97,51 @@
       	** Permutation test **
       
        Permutation test with alternative: two.sided 
-       Observed statistic
+       Observed mean 
         No :  286.6917 	 Yes :  453.7974 
        Observed difference: -167.1057 
       
        Mean of permutation distribution: -1.02484 
        Standard error of permutation distribution: 62.39977 
        P-value:   0.004 
+      
+      	*-------------*
+      
+
+# boot() categorical print output is stable
+
+    Code
+      print(result)
+    Output
+      
+      	** Bootstrap interval for difference of proportion 
+      
+       Observed difference of proportion : A - B = 0.25 
+       Mean of bootstrap distribution: 0.2325 
+       Standard error of bootstrap distribution: 0.33435 
+      
+       Bootstrap percentile interval
+       2.5% 97.5% 
+      -0.50  0.75 
+      
+      		*--------------*
+
+# permTest() categorical print output is stable
+
+    Code
+      print(result)
+    Output
+      
+      	** Permutation test **
+      
+       Permutation test with alternative: two.sided 
+       Observed proportion 
+        A :  0.5 	 B :  0.5 
+       Observed difference: 0 
+      
+       Mean of permutation distribution: -0.02705 
+       Standard error of permutation distribution: 0.36785 
+       P-value:       1 
       
       	*-------------*
       
