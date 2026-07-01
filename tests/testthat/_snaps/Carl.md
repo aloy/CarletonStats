@@ -176,3 +176,38 @@
            F-stat     P-value 
       1.53648e+01 5.93642e-10 
 
+# summary.carlboot() output is stable
+
+    Code
+      summary(result)
+    Output
+      Replications: 500 
+      
+      Summary Statistics of Bootstrap Distribution: 
+        Observed     Mean        SE
+      1 18.81333 18.83433 0.9604015
+
+# summary.carlperm() output is stable
+
+    Code
+      summary(result)
+    Output
+      Replications: 999 
+      
+      Summary Statistics of Permutation Distribution: 
+      
+         Observed     Mean Alternative P.value
+      1 -167.1057 -1.02484   two.sided   0.004
+
+# summary.carlperm() includes df columns for ANOVA results
+
+    Code
+      summary(result)
+    Output
+      Replications: 999 
+      
+      Summary Statistics of Permutation Distribution: 
+      
+        Observed     Mean df1 df2 P.value
+      1  15.3648 1.056757   5  65   0.001
+

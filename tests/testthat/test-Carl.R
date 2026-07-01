@@ -461,3 +461,88 @@ test_that("groupedBar() single-variable formula returns invisibly", {
 test_that("groupedBar() two-variable formula returns invisibly", {
   expect_invisible(groupedBar(am ~ cyl, data = mtcars))
 })
+
+## plot() ----------------------------------------------------------------
+
+test_that("plot.carlboot() returns a ggplot object", {
+  result <- boot(ToothGrowth$len, B = 500, seed = 1, plot.hist = FALSE)
+  expect_s3_class(plot(result), "gg")
+})
+
+test_that("plot.carlperm() returns a ggplot object", {
+  result <- permTest(
+    states03$ViolentCrime,
+    states03$DeathPenalty,
+    B = 999,
+    seed = 1,
+    plot.hist = FALSE
+  )
+  expect_s3_class(plot(result), "gg")
+})
+
+## summary() -------------------------------------------------------------
+
+test_that("summary.carlboot() output is stable", {
+  result <- boot(ToothGrowth$len, B = 500, seed = 1, plot.hist = FALSE)
+  expect_snapshot(summary(result))
+})
+
+test_that("summary.carlperm() output is stable", {
+  result <- permTest(
+    states03$ViolentCrime,
+    states03$DeathPenalty,
+    B = 999,
+    seed = 1,
+    plot.hist = FALSE
+  )
+  expect_snapshot(summary(result))
+})
+
+test_that("summary.carlperm() includes df columns for ANOVA results", {
+  result <- permTestAnova(
+    chickwts$weight,
+    chickwts$feed,
+    B = 999,
+    seed = 1,
+    plot.hist = FALSE
+  )
+  expect_snapshot(summary(result))
+})
+
+## stemPlot() ------------------------------------------------------------
+
+test_that("stemPlot() single variable produces output", {
+  expect_output(stemPlot(states03$Births), "Stem and Leaf plot")
+})
+
+test_that("stemPlot() returns invisibly", {
+  expect_invisible(stemPlot(states03$Births))
+})
+
+test_that("stemPlot() errors on non-numeric input", {
+  expect_error(stemPlot(states03$Region), "variable must be numeric")
+})
+
+test_that("stemPlot() grouped variable produces output for each group", {
+  expect_output(stemPlot(states03$Births, states03$Region), "Region")
+})
+
+test_that("stemPlot() formula interface works", {
+  expect_output(stemPlot(Births ~ Region, data = states03), "Stem and Leaf")
+})
+
+## pvalue.R invalid alternative ------------------------------------------
+
+test_that("permTest() errors on invalid alternative argument", {
+  expect_error(
+    permTest(
+      states03$ViolentCrime,
+      states03$DeathPenalty,
+      B = 99,
+      seed = 1,
+      alternative = "neither",
+      plot.hist = FALSE
+    ),
+    "Alternative not matched"
+  )
+})
