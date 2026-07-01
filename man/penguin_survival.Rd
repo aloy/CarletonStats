@@ -8,8 +8,7 @@
 A data frame with 2 observations on the following 3 variables.
 \describe{
   \item{TagType}{Tag type: \code{Metal} or \code{Electronic}}
-  \item{SurStatus}{Survival status: \code{Survived} or \code{Electronic}}
-  \item{Died}{Number of penguins that died}
+  \item{Status}{Survival status: \code{Survived} or \code{Electronic}}
 }
 }
 \source{
