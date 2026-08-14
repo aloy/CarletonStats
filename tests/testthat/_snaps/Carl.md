@@ -42,13 +42,13 @@
       
       	**Bootstrap interval for mean of paired difference 
       
-       Observed mean of  Icecream$ChocCalories - Icecream$VanillaCalories : -7.33333 
-       Mean of bootstrap distribution: -7.44503 
+       Observed mean of  Icecream$ChocCalories - Icecream$VanillaCalories : 7.33333 
+       Mean of bootstrap distribution: 7.44503 
        Standard error of bootstrap distribution: 2.01653 
       
        Bootstrap percentile interval
-            2.5%      97.5% 
-      -11.605769  -3.947436 
+           2.5%     97.5% 
+       3.947436 11.605769 
       
       		*--------------*
 
@@ -194,10 +194,10 @@
       
        Permutation test with alternative: two.sided 
        Observed mean
-        Icecream$VanillaCalories :  198.7436 	 Icecream$ChocCalories :  191.4103 
-       Observed difference: -7.33333 
+        Icecream$VanillaCalories :  191.4103 	 Icecream$ChocCalories :  198.7436 
+       Observed difference: 7.33333 
       
-       Mean of permutation distribution: -0.05513 
+       Mean of permutation distribution: 0.05513 
        Standard error of permutation distribution: 2.38151 
        P-value:   0.002 
       

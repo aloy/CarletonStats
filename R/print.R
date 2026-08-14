@@ -142,11 +142,11 @@ print.carlperm <- function(x, ...) {
             " ",
             attr(x, "x.name"),
             ": ",
-            round(attr(x, "var.stats")[2], 5),
+            round(attr(x, "var.stats")[1], 5),
             "\t",
             attr(x, "y.name"),
             ": ",
-            round(attr(x, "var.stats")[1], 5),
+            round(attr(x, "var.stats")[2], 5),
             "\n"
           )
           if (is.null(attr(x, "xlab"))) attr(x, "xlab") <- "Paired differences"
