@@ -36,7 +36,7 @@ permTestPaired.default <-
     n <- length(x2)
     stat1 <- mean(x2)
     stat2 <- mean(y2)
-    Diff <- x2 - y2
+    Diff <- y2 - x2
     observed <- mean(Diff)
 
     result <- numeric(B)
