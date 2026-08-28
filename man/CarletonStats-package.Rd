@@ -12,6 +12,7 @@ Includes commands for bootstrapping and permutation tests, a command for created
 Useful links:
 \itemize{
   \item \url{https://github.com/aloy/CarletonStats}
+  \item \url{https://aloy.github.io/CarletonStats/}
   \item Report bugs at \url{https://github.com/aloy/CarletonStats/issues}
 }
 
