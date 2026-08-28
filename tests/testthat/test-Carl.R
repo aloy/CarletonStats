@@ -404,6 +404,30 @@ test_that("permTest() penguin proportion print output is stable", {
   expect_snapshot(print(result))
 })
 
+test_that("boot() difference in proportions matches for 0/1 and factor coding", {
+  g <- c("A", "A", "A", "A", "B", "B", "B", "B")
+  x_numeric <- c(1, 0, 1, 1, 0, 1, 0, 0)
+  x_factor <- factor(ifelse(x_numeric == 1, "yes", "no"), levels = c("no", "yes"))
+
+  r_numeric <- boot(x_numeric, g, B = 500, seed = 1, plot.hist = FALSE)
+  r_factor <- boot(x_factor, g, success = "yes", B = 500, seed = 1, plot.hist = FALSE)
+
+  expect_equal(attr(r_numeric, "observed"), attr(r_factor, "observed"))
+  expect_equal(as.numeric(r_numeric), as.numeric(r_factor))
+})
+
+test_that("permTest() difference in proportions matches for 0/1 and factor coding", {
+  g <- c("A", "A", "A", "A", "B", "B", "B", "B")
+  x_numeric <- c(1, 0, 1, 1, 0, 1, 0, 0)
+  x_factor <- factor(ifelse(x_numeric == 1, "yes", "no"), levels = c("no", "yes"))
+
+  r_numeric <- permTest(x_numeric, g, B = 499, seed = 1, plot.hist = FALSE)
+  r_factor <- permTest(x_factor, g, success = "yes", B = 499, seed = 1, plot.hist = FALSE)
+
+  expect_equal(attr(r_numeric, "observed"), attr(r_factor, "observed"))
+  expect_equal(as.numeric(r_numeric), as.numeric(r_factor))
+})
+
 ## permTestPaired() ------------------------------------------------------
 
 test_that("permTestPaired() statistic attribute is 'paired difference'", {
